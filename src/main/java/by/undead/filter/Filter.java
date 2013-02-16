@@ -28,9 +28,9 @@ public class Filter implements Serializable {
 
     private Map<String, String> manufacturers = new HashMap<String, String>();
 
-    private int costMin = 100;
+    private int costMin = 0;
 
-    private int CostMax = 1000;
+    private int costMax = 0;
 
     @ManagedProperty(value = "#{equipment}")
     private Equipment equipment;
@@ -87,23 +87,24 @@ public class Filter implements Serializable {
     }
 
     public int getCostMax() {
-        return CostMax;
+        return costMax;
     }
 
     public void setCostMax(int costMax) {
-        CostMax = costMax;
+        this.costMax = costMax;
     }
 
     public String update() {
         FacesContext context = FacesContext.getCurrentInstance();
         //equipment.setLaptops((ArrayList<Laptop>) context.getExternalContext().getSessionMap().get("laptops"));
         equipment.setLaptops(updateLaptop(equipment.getLaptopsCopy()));
+        //System.out.println(costMin + " to " + costMax);
         return null;
     }
 
     private List<Laptop> updateLaptop(List<Laptop> list) {
 
-        if (!cpuAMD && !cpuIntel && manufacturer.equals("")) return list;
+        if (!cpuAMD && !cpuIntel && manufacturer.equals("") && costMin == 0 && costMax == 0) return list;
 
         List<Laptop> laptops = new ArrayList<Laptop>();
         for (Laptop laptop : list) {
@@ -121,6 +122,11 @@ public class Filter implements Serializable {
             }
             if (!manufacturer.equals("")) {
                 if (!laptop.getManufacturer().equals(manufacturer)) {
+                    continue;
+                }
+            }
+            if (!(costMin == 0 && costMax == 0)) {
+                if (!(costMin < laptop.getCost() && laptop.getCost() < costMax)) {
                     continue;
                 }
             }

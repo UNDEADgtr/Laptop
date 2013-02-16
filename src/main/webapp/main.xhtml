@@ -5,9 +5,7 @@
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title><ui:insert name="windowTitle">
-        template page
-    </ui:insert></title>
+    <title>Laptops</title>
     <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 <h:body>
@@ -66,6 +64,18 @@
                     </h:panelGrid>
                     <br/>
 
+                    <h:outputText value="Enter a price range from "/>
+                    <p:inputText id="costMin" value="#{filter.costMin}" converterMessage="Incorrectly entered the minimum price">
+                        <f:convertNumber type="number" integerOnly="true"/>
+                    </p:inputText>
+                    <br/>
+                    <h:outputText value=" to "/>
+                    <br/>
+                    <p:inputText id="costMax" value="#{filter.costMax}" converterMessage="Incorrectly entered the maximum price">
+                        <f:convertNumber type="number" integerOnly="true"/>
+                    </p:inputText>
+                    <br/>
+                    <br/>
                     <!--<h3>Range Slider</h3>-->
                     <!--<h:panelGrid columns="1" style="margin-bottom:10px">-->
                         <!--<h:outputText id="displayRange" value="Between #{filter.costMin} and #{filter.costMax}"/>-->

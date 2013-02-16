@@ -114,6 +114,6 @@ public class Equipment implements Serializable {
     }
 
     private int getRandomCost() {
-        return (int) (Math.random() * 100 + 500);
+        return (int) (Math.random() * 1000 + 100);
     }
 }
