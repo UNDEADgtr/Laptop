@@ -1,1 +1,23 @@
-This file was created by IntelliJ IDEA 12.0.3 for binding GitHub repository
+This file was created by Dzmitry Khralovich
+
+Task
+1) Create JSF+PrimeFaces maven WEB application project
+2) Develop the following WEB application
+          Show list of laptops in grid component (PrimeFace grid)
+             -- Grid has to consists of the following columns:
+                 -- Picture of a laptop
+                 -- Vendor
+                 -- Manufacturer
+                 -- Model
+              -- All columns should be sortable
+              -- Few simple filters have to be implemented:
+                  -- Checkboxes: AMD/Intel platforms
+                  -- Drop down list that allows users to filter it by
+manufacturer
+                  -- Slider(s) or text fields to set price range
+              -- Filter has to be placed at the left side of WEB page,
+grid should occupies central part of WEB page
+              -- List of available laptops should be read from server
+side (stored in
+                 file or db)
+3) Application should be deployable (and demonstrated) under JBoss7

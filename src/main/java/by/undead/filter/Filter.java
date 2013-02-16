@@ -6,6 +6,7 @@ import by.undead.entity.Laptop;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.Map;
  * Time: 20:17
  */
 @ManagedBean(name = "filter")
-@SessionScoped
+@ViewScoped
 public class Filter implements Serializable {
     private boolean cpuAMD;
     private boolean cpuIntel;
