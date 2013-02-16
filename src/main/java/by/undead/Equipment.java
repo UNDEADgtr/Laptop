@@ -22,6 +22,8 @@ public class Equipment implements Serializable {
     private List<Laptop> laptops;
     private List<Laptop> laptopsCopy;
 
+    private Laptop selectedLaptop;
+
     private final static String[] model;
     private final static String[] manufacturers;
     private final static String[] seller;
@@ -67,13 +69,10 @@ public class Equipment implements Serializable {
         platform[1] = "AMD";
     }
 
-
     public Equipment() {
         laptops = new ArrayList<Laptop>();
         randomLaptops(laptops, 10);
         laptopsCopy = new ArrayList<Laptop>(laptops);
-        //FacesContext context = FacesContext.getCurrentInstance();
-        //context.getExternalContext().getSessionMap().put("laptops", laptops);
     }
 
     public List<Laptop> getLaptops() {
@@ -90,6 +89,14 @@ public class Equipment implements Serializable {
 
     public static String[] getManufacturers() {
         return manufacturers;
+    }
+
+    public Laptop getSelectedLaptop() {
+        return selectedLaptop;
+    }
+
+    public void setSelectedLaptop(Laptop selectedLaptop) {
+        this.selectedLaptop = selectedLaptop;
     }
 
     private void randomLaptops(List<Laptop> list, int size) {
@@ -118,6 +125,6 @@ public class Equipment implements Serializable {
     }
 
     private int getRandomCost() {
-        return (int) (Math.random() * 1000 + 100);
+        return (int) (Math.random() * 1000);
     }
 }

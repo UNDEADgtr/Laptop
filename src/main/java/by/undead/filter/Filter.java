@@ -96,9 +96,7 @@ public class Filter implements Serializable {
 
     public String update() {
         FacesContext context = FacesContext.getCurrentInstance();
-        //equipment.setLaptops((ArrayList<Laptop>) context.getExternalContext().getSessionMap().get("laptops"));
         equipment.setLaptops(updateLaptop(equipment.getLaptopsCopy()));
-        //System.out.println(costMin + " to " + costMax);
         return null;
     }
 

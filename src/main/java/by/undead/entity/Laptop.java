@@ -1,5 +1,9 @@
 package by.undead.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -7,12 +11,29 @@ import java.io.Serializable;
  * Date: 14.02.13
  * Time: 22:32
  */
+@Entity
 public class Laptop implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column
     private String model;
+
+    @Column
     private String manufacturer;
+
+    @Column
     private String seller;
+
+    @Column
     private String photo;
+
+    @Column
     private String platform;
+
+    @Column
     private int cost;
 
     public Laptop() {
@@ -25,6 +46,14 @@ public class Laptop implements Serializable {
         this.photo = photo;
         this.platform = platform;
         this.cost = cost;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getModel() {
@@ -83,6 +112,7 @@ public class Laptop implements Serializable {
         Laptop laptop = (Laptop) o;
 
         if (cost != laptop.cost) return false;
+        if (id != null ? !id.equals(laptop.id) : laptop.id != null) return false;
         if (manufacturer != null ? !manufacturer.equals(laptop.manufacturer) : laptop.manufacturer != null)
             return false;
         if (model != null ? !model.equals(laptop.model) : laptop.model != null) return false;
@@ -95,7 +125,8 @@ public class Laptop implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = model != null ? model.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
         result = 31 * result + (seller != null ? seller.hashCode() : 0);
         result = 31 * result + (photo != null ? photo.hashCode() : 0);
@@ -107,12 +138,13 @@ public class Laptop implements Serializable {
     @Override
     public String toString() {
         return "Laptop{" +
-                "model='" + model + '\'' +
+                "id=" + id +
+                ", model='" + model + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", seller='" + seller + '\'' +
                 ", photo='" + photo + '\'' +
                 ", platform='" + platform + '\'' +
-                ", cost='" + cost + '\'' +
+                ", cost=" + cost +
                 '}';
     }
 }
