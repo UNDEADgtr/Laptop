@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core"
-        >
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title><ui:insert name="windowTitle">
@@ -25,18 +25,20 @@
                         <p:growl id="msg"/>
                         <p:dataTable var="laptop" value="#{equipment.laptops}">
                             <p:column headerText="Photo">
-                                <p:graphicImage library="images" name="note_1.jpg"/>
-                                <p:graphicImage value="/resources/images/note_1.jpg"/>
+                                <p:graphicImage library="images" name="#{laptop.photo}.jpg"/>
                             </p:column>
-                            <p:column headerText="Seller">
+                            <p:column sortBy="#{laptop.seller}" headerText="Seller">
                                 <h:outputText value="#{laptop.seller}"/>
                             </p:column>
-                            <p:column headerText="Manufacturer">
+                            <p:column sortBy="#{laptop.manufacturer}" headerText="Manufacturer">
                                 <h:outputText value="#{laptop.manufacturer}"/>
                             </p:column>
-                            <p:column headerText="Model">
+                            <p:column sortBy="#{laptop.model}" headerText="Model">
                                 <h:outputText value="#{laptop.model}"/>
                             </p:column>
+                            <f:facet name="footer">
+                                In total there are #{fn:length(equipment.laptops)} laptops.
+                            </f:facet>
                         </p:dataTable>
                     </h:form>
                 </div>
@@ -63,6 +65,15 @@
                         </p:selectOneMenu>
                     </h:panelGrid>
                     <br/>
+
+                    <!--<h3>Range Slider</h3>-->
+                    <!--<h:panelGrid columns="1" style="margin-bottom:10px">-->
+                        <!--<h:outputText id="displayRange" value="Between #{filter.costMin} and #{filter.costMax}"/>-->
+                        <!--<p:slider for="costMin,costMax" display="displayRange" style="width:200px" range="true"-->
+                                  <!--displayTemplate="Between {min} and {max}"/>-->
+                        <!--<h:inputHidden id="costMin" value="#{filter.costMin}" />-->
+                        <!--<h:inputHidden id="costMax" value="#{filter.costMax}" />-->
+                    <!--</h:panelGrid>-->
 
                     <p:commandButton value="Submit" update=":form1" action="#{filter.update}"/>
                 </h:form>

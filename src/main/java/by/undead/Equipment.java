@@ -20,6 +20,7 @@ import java.util.List;
 public class Equipment implements Serializable {
 
     private List<Laptop> laptops;
+    private List<Laptop> laptopsCopy;
 
     private final static String[] model;
     public final static String[] manufacturers;
@@ -54,12 +55,12 @@ public class Equipment implements Serializable {
         seller[5] = "iShop";
 
         photo = new String[6];
-        photo[0] = "note_1.jpg";
-        photo[1] = "note_2.jpg";
-        photo[2] = "note_3.jpg";
-        photo[3] = "note_4.jpg";
-        photo[4] = "note_5.jpg";
-        photo[5] = "note_6.jpg";
+        photo[0] = "note_1";
+        photo[1] = "note_2";
+        photo[2] = "note_3";
+        photo[3] = "note_4";
+        photo[4] = "note_5";
+        photo[5] = "note_6";
 
         platform = new String[2];
         platform[0] = "Intel";
@@ -70,8 +71,9 @@ public class Equipment implements Serializable {
     public Equipment() {
         laptops = new ArrayList<Laptop>();
         randomLaptops(laptops, 10);
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.getExternalContext().getSessionMap().put("laptops", laptops);
+        laptopsCopy = new ArrayList<Laptop>(laptops);
+        //FacesContext context = FacesContext.getCurrentInstance();
+        //context.getExternalContext().getSessionMap().put("laptops", laptops);
     }
 
     public List<Laptop> getLaptops() {
@@ -80,6 +82,10 @@ public class Equipment implements Serializable {
 
     public void setLaptops(List<Laptop> laptops) {
         this.laptops = laptops;
+    }
+
+    public List<Laptop> getLaptopsCopy() {
+        return laptopsCopy;
     }
 
     private void randomLaptops(List<Laptop> list, int size) {
@@ -100,7 +106,7 @@ public class Equipment implements Serializable {
     }
 
     private String getRandomPhoto() {
-        return seller[(int) (Math.random() * 6)];
+        return photo[(int) (Math.random() * 6)];
     }
 
     private String getRandomPlatform() {
