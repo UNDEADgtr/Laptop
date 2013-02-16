@@ -41,10 +41,9 @@ public class Filter implements Serializable {
     }
 
     public Filter() {
-        for (String str : Equipment.manufacturers) {
+        for (String str : Equipment.getManufacturers()) {
             manufacturers.put(str, str);
         }
-
     }
 
     public boolean isCpuAMD() {

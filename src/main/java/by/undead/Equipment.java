@@ -23,7 +23,7 @@ public class Equipment implements Serializable {
     private List<Laptop> laptopsCopy;
 
     private final static String[] model;
-    public final static String[] manufacturers;
+    private final static String[] manufacturers;
     private final static String[] seller;
     private final static String[] platform;
     private final static String[] photo;
@@ -86,6 +86,10 @@ public class Equipment implements Serializable {
 
     public List<Laptop> getLaptopsCopy() {
         return laptopsCopy;
+    }
+
+    public static String[] getManufacturers() {
+        return manufacturers;
     }
 
     private void randomLaptops(List<Laptop> list, int size) {
