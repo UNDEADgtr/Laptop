@@ -34,10 +34,40 @@
                             <p:column sortBy="#{laptop.model}" headerText="Model">
                                 <h:outputText value="#{laptop.model}"/>
                             </p:column>
+                            <p:column style="width:4%">
+                                <p:commandButton id="selectButton" update=":form1:display" oncomplete="laptopDialog.show()" icon="ui-icon-search" title="View">
+                                    <f:setPropertyActionListener value="#{laptop}" target="#{equipmentDB.selectedLaptop}" />
+                                </p:commandButton>
+                            </p:column>
                             <f:facet name="footer">
                                 In total there are #{fn:length(equipmentDB.laptops)} laptops.
                             </f:facet>
                         </p:dataTable>
+                        <p:dialog header="Laptop Details" widgetVar="laptopDialog" resizable="false" id="laptopDlg"
+                                  showEffect="fade" hideEffect="explode" modal="true">
+
+                            <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+
+                                <f:facet name="header">
+                                    <p:graphicImage library="images" name="#{equipmentDB.selectedLaptop.photo}.jpg"/>
+                                </f:facet>
+
+                                <h:outputText value="Model:" />
+                                <h:outputText value="#{equipmentDB.selectedLaptop.model}" style="font-weight:bold"/>
+
+                                <h:outputText value="Manufacturer:" />
+                                <h:outputText value="#{equipmentDB.selectedLaptop.manufacturer}" style="font-weight:bold"/>
+
+                                <h:outputText value="Platform:" />
+                                <h:outputText value="#{equipmentDB.selectedLaptop.platform}" style="font-weight:bold"/>
+
+                                <h:outputText value="Seller:" />
+                                <h:outputText value="#{equipmentDB.selectedLaptop.seller}" style="font-weight:bold"/>
+
+                                <h:outputText value="Cost:" />
+                                <h:outputText value="#{equipmentDB.selectedLaptop.cost}" style="font-weight:bold"/>
+                            </h:panelGrid>
+                        </p:dialog>
                     </h:form>
                 </div>
             </div>

@@ -103,7 +103,6 @@ public class Filter implements Serializable {
     }
 
     public String update() {
-        //FacesContext context = FacesContext.getCurrentInstance();
         equipment.setLaptops(updateLaptop(equipment.getLaptopsCopy()));
         return null;
     }
@@ -136,10 +135,16 @@ public class Filter implements Serializable {
                     continue;
                 }
             }
-            if (!(costMin == 0 && costMax == 0)) {
-                if (!(costMin < laptop.getCost() && laptop.getCost() < costMax)) {
-                    continue;
-                }
+//            if (!(costMin == 0 && costMax == 0)) {
+//                if (!(costMin < laptop.getCost() && laptop.getCost() < costMax)) {
+//                    continue;
+//                }
+//            }
+            if (costMin != 0 && costMin > laptop.getCost()){
+                continue;
+            }
+            if (costMax != 0 && costMax < laptop.getCost()){
+                continue;
             }
             laptops.add(laptop);
         }

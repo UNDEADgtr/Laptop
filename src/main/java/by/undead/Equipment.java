@@ -2,6 +2,7 @@ package by.undead;
 
 import by.undead.entity.Laptop;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -39,7 +40,6 @@ public class Equipment implements Serializable {
         model[4] = "2489";
         model[5] = "3355";
 
-
         manufacturers = new String[6];
         manufacturers[0] = "ASUS";
         manufacturers[1] = "DELL";
@@ -70,6 +70,11 @@ public class Equipment implements Serializable {
     }
 
     public Equipment() {
+    }
+
+    @PostConstruct
+    public void init()
+    {
         laptops = new ArrayList<Laptop>();
         randomLaptops(laptops, 10);
         laptopsCopy = new ArrayList<Laptop>(laptops);

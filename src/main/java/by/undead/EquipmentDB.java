@@ -23,15 +23,18 @@ public class EquipmentDB implements Serializable {
     private List<Laptop> laptops;
     private List<Laptop> laptopsCopy;
 
+    private Laptop selectedLaptop;
+
     private IService service;
 
     public EquipmentDB() {
+        service = ServiceImpl.getService();
     }
 
     @PostConstruct
     public void init()
     {
-        laptops = ServiceImpl.getService().getAllLaptops();
+        laptops = service.getAllLaptops();
         laptopsCopy = new ArrayList<Laptop>(laptops);
     }
 
@@ -45,5 +48,13 @@ public class EquipmentDB implements Serializable {
 
     public List<Laptop> getLaptopsCopy() {
         return laptopsCopy;
+    }
+
+    public Laptop getSelectedLaptop() {
+        return selectedLaptop;
+    }
+
+    public void setSelectedLaptop(Laptop selectedLaptop) {
+        this.selectedLaptop = selectedLaptop;
     }
 }
