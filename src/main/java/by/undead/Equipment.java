@@ -73,8 +73,7 @@ public class Equipment implements Serializable {
     }
 
     @PostConstruct
-    public void init()
-    {
+    public void init() {
         laptops = new ArrayList<Laptop>();
         randomLaptops(laptops, 10);
         laptopsCopy = new ArrayList<Laptop>(laptops);
@@ -105,8 +104,8 @@ public class Equipment implements Serializable {
     }
 
     private void randomLaptops(List<Laptop> list, int size) {
-        for(int i = 0 ; i < size ; i++)
-            list.add(new Laptop(getRandomModel(), getRandomManufacturer(), getRandomSeller(), getRandomPhoto(),getRandomPlatform(),getRandomCost()));
+        for (int i = 0; i < size; i++)
+            list.add(new Laptop(getRandomModel(), getRandomManufacturer(), getRandomSeller(), getRandomPhoto(), getRandomPlatform(), getRandomCost()));
     }
 
     private String getRandomModel() {
@@ -118,7 +117,7 @@ public class Equipment implements Serializable {
     }
 
     private String getRandomSeller() {
-        return seller[(int) (Math.random() * 6)];
+        return seller[(int) (Math.random() * 5)];
     }
 
     private String getRandomPhoto() {

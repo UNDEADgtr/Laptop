@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:composition template="main.xhtml">
+        <ui:define name="content">
+
+            <h:form>
+                <p:tabView effect="fade" effectDuration="normal" style="border-bottom-style:solid;">
+                    <p:tab title="About project">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p><strong>Task</strong></p>
+                            <p>1) Create JSF+PrimeFaces maven WEB application project</p>
+                            <p>2) Develop the following WEB application</p>
+                            <p>Show list of laptops in grid component (PrimeFace grid)</p>
+                            <p>- Grid has to consists of the following columns:</p>
+                            <p>- Picture of a laptop</p>
+                            <p>- Vendor</p>
+                            <p>- Manufacturer</p>
+                            <p>- Model</p>
+                            <p>- All columns should be sortable</p>
+                            <p>- Few simple filters have to be implemented:</p>
+                            <p>- Checkboxes: AMD/Intel platforms</p>
+                            <p>- Drop down list that allows users to filter it by manufacturer</p>
+                            <p>- Slider(s) or text fields to set price range</p>
+                            <p>- Filter has to be placed at the left side of WEB page,grid should occupies central part of WEB page</p>
+                            <p>- List of available laptops should be read from server side (stored in file or db)</p>
+                            <p>3) Application should be deployable (and demonstrated) under JBoss7,</p>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Contacts">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage library="images" name="photo.jpg"/>
+                            <h3>Khralovich Dzmitry</h3>
+                            <h3>undead_gtr@mail.ru</h3>
+                            <h3>+37529-5977830</h3>
+                        </h:panelGrid>
+                    </p:tab>
+                </p:tabView>
+            </h:form>
+
+        </ui:define>
+        <ui:define name="sidebar">
+
+            <br/>
+            <h3>Created by:</h3>
+            <h3>UNDEADgtr</h3>
+            <br/>
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

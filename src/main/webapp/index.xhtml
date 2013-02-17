@@ -1,53 +1,34 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsp/jstl/functions">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Laptops</title>
-    <h:outputStylesheet library="css" name="style.css"/>
-</h:head>
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
 <h:body>
+    <ui:composition template="main.xhtml">
+        <ui:define name="content">
+            <p:fieldset legend="Random laptops">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:graphicImage library="images" name="random.jpg"/>
+                    <h:outputText
+                            value="To view a random laptops click on the link"/>
 
-    <div id="wrapper">
-        <div id="header">
-            <ui:insert name="header">
-                <ui:include src="template/header.xhtml"/>
-            </ui:insert>
-        </div>
-        <div id="middle">
-            <div id="container">
-                <div id="content">
-                    <p:fieldset legend="Random laptops">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <p:graphicImage library="images" name="random.jpg"/>
-                            <h:outputText
-                                    value="To view a random laptops click on the link"/>
+                    <h:link value="random" outcome="laptops"/>
 
-                            <h:link value="random" outcome="main"/>
-
-                        </h:panelGrid>
-                    </p:fieldset>
-                    <p:fieldset legend="Laptops from database">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <p:graphicImage library="images" name="db.jpg"/>
-                            <h:outputText
-                                    value="To view the notebooks of the database, click on the link"/>
-                            <h:link value="database" outcome="maindb"/>
-                        </h:panelGrid>
-                    </p:fieldset>
-                </div>
-            </div>
-            <div class="sidebar" id="sideLeft">
+                </h:panelGrid>
+            </p:fieldset>
+            <p:fieldset legend="Laptops from database">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:graphicImage library="images" name="db.jpg"/>
+                    <h:outputText
+                            value="To view the notebooks of the database, click on the link"/>
+                    <h:link value="database" outcome="laptopsdb"/>
+                </h:panelGrid>
+            </p:fieldset>
+        </ui:define>
+        <ui:define name="sidebar">
+            <br/>
             <h3>Make the right choice</h3>
-            </div>
-        </div>
-    </div>
-    <div id="footer">
-        <ui:insert name="footer">
-            <ui:include src="template/footer.xhtml"/>
-        </ui:insert>
-    </div>
+            <br/>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>
