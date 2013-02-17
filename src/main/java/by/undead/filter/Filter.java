@@ -1,6 +1,7 @@
 package by.undead.filter;
 
 import by.undead.Equipment;
+import by.undead.EquipmentDB;
 import by.undead.entity.Laptop;
 
 import javax.faces.bean.ManagedBean;
@@ -36,8 +37,15 @@ public class Filter implements Serializable {
     @ManagedProperty(value = "#{equipment}")
     private Equipment equipment;
 
+    @ManagedProperty(value = "#{equipmentDB}")
+    private EquipmentDB equipmentDB;
+
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
+    }
+
+    public void setEquipmentDB(EquipmentDB equipmentDB) {
+        this.equipmentDB = equipmentDB;
     }
 
     public Filter() {
@@ -95,8 +103,13 @@ public class Filter implements Serializable {
     }
 
     public String update() {
-        FacesContext context = FacesContext.getCurrentInstance();
+        //FacesContext context = FacesContext.getCurrentInstance();
         equipment.setLaptops(updateLaptop(equipment.getLaptopsCopy()));
+        return null;
+    }
+
+    public String updateDB() {
+        equipmentDB.setLaptops(updateLaptop(equipmentDB.getLaptopsCopy()));
         return null;
     }
 

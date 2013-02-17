@@ -9,8 +9,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
  * Time: 15:48
  */
 @ManagedBean(name = "service")
-@SessionScoped
+@ApplicationScoped
 public class ServiceImpl implements Serializable, IService {
 
 
