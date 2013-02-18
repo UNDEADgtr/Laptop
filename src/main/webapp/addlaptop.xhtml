@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+    <ui:composition template="main.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+
+                <p:panel id="panel" header="New Laptop" style="margin-bottom:10px;">
+                    <p:messages id="messages"/>
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="model" value="Enter a model: *"/>
+                        <p:inputText id="model"
+                                     value="#{addLaptop.laptop.model}" required="true" label="Model">
+                            <f:validateLength minimum="2"/>
+                        </p:inputText>
+                        <p:message for="model"/>
+
+                        <h:outputLabel for="manufacturer" value="Enter a manufacturer: *"/>
+                        <p:selectOneMenu id="manufacturer" value="#{addLaptop.laptop.manufacturer}" required="true" label="Manufacturer">
+                            <f:selectItem itemLabel="Select Manufacturer" itemValue=""/>
+                            <f:selectItems value="#{addLaptop.manufacturers}"/>
+                        </p:selectOneMenu>
+                        <p:message for="manufacturer"/>
+
+                        <h:outputLabel for="platform" value="Enter a platform: *"/>
+                        <p:selectOneMenu id="platform" value="#{addLaptop.laptop.platform}" required="true" label="Platform">
+                            <f:selectItem itemLabel="Select Platform" itemValue=""/>
+                            <f:selectItems value="#{addLaptop.platforms}"/>
+                        </p:selectOneMenu>
+                        <p:message for="platform"/>
+
+                        <h:outputLabel for="photo" value="Enter a photo: *"/>
+                        <p:selectOneMenu id="photo" value="#{addLaptop.laptop.photo}" required="true" label="Photo">
+                            <f:selectItem itemLabel="Select Photo" itemValue=""/>
+                            <f:selectItems value="#{addLaptop.photos}"/>
+                        </p:selectOneMenu>
+                        <p:message for="photo"/>
+
+                        <h:outputLabel for="seller" value="Enter a seller: *"/>
+                        <p:selectOneMenu id="seller" value="#{addLaptop.laptop.seller}" required="true" label="Seller">
+                            <f:selectItem itemLabel="Select Seller" itemValue=""/>
+                            <f:selectItems value="#{addLaptop.sellers}"/>
+                        </p:selectOneMenu>
+                        <p:message for="seller"/>
+
+                        <h:outputLabel for="cost" value="Enter a cost: *"/>
+                        <p:inputText id="cost"
+                                     value="#{addLaptop.laptop.cost}" required="true" label="Cost"/>
+                        <p:message for="cost"/>
+
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:commandButton value="Add laptop" update="panel,display" id="ajax"
+                                 actionListener="#{addLaptop.saveLaptop}" styleClass="ui-priority-primary"/>
+
+                <p:panel id="display" header="Information" style="margin-top:10px;">
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Model: "/>
+                        <h:outputText value="#{addLaptop.laptop.model}"/>
+
+                        <h:outputText value="Manufacturer: "/>
+                        <h:outputText value="#{addLaptop.laptop.manufacturer}"/>
+
+                        <h:outputText value="Platform: "/>
+                        <h:outputText value="#{addLaptop.laptop.platform}"/>
+
+                        <h:outputText value="Photo: "/>
+                        <h:outputText value="#{addLaptop.laptop.photo}"/>
+
+                        <h:outputText value="Seller: "/>
+                        <h:outputText value="#{addLaptop.laptop.seller}"/>
+
+                        <h:outputText value="Cost: "/>
+                        <h:outputText value="#{addLaptop.laptop.cost}"/>
+                    </h:panelGrid>
+                </p:panel>
+
+            </h:form>
+
+
+        </ui:define>
+        <ui:define name="sidebar">
+            <br/>
+
+            <h3>Add the laptop</h3>
+            <br/>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
