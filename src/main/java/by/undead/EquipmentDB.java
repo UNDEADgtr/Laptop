@@ -7,6 +7,7 @@ import by.undead.service.ServiceImpl;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
  * Time: 23:52
  */
 @ManagedBean(name = "equipmentDB")
-@SessionScoped
+@ViewScoped
 public class EquipmentDB implements Serializable {
 
     private List<Laptop> laptops;

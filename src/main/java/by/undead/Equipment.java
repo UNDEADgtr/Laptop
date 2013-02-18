@@ -95,6 +95,18 @@ public class Equipment implements Serializable {
         return manufacturers;
     }
 
+    public static String[] getSeller() {
+        return seller;
+    }
+
+    public static String[] getPlatform() {
+        return platform;
+    }
+
+    public static String[] getPhoto() {
+        return photo;
+    }
+
     public Laptop getSelectedLaptop() {
         return selectedLaptop;
     }

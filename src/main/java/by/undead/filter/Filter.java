@@ -4,6 +4,7 @@ import by.undead.Equipment;
 import by.undead.EquipmentDB;
 import by.undead.entity.Laptop;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -49,6 +50,10 @@ public class Filter implements Serializable {
     }
 
     public Filter() {
+    }
+
+    @PostConstruct
+    public void init() {
         for (String str : Equipment.getManufacturers()) {
             manufacturers.put(str, str);
         }
